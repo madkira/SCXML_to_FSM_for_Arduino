@@ -23,12 +23,12 @@ void call_for_initial_on_entry(){
 void RUN_trans(Event evt){
 	switch (evt){
 	  case Pause_RISING_interrupt:
-		Serial.println("Button Interrupt event move From state RUN to PAUSE");
+                Serial.println("Button interrupt change RUN to PAUSE");
 		current_state = PAUSE_trans;
 		PAUSE_entry();
 		break;
 	  case Time:
-		Serial.println("Intern event send");
+                Serial.println("internal send event");
 		doUpdate();
 		clock_start(SYSTICK_Time_CLOCK, SYSTICK_Time_RECALL_PERIOD, Time);
 		break;
@@ -36,14 +36,13 @@ void RUN_trans(Event evt){
 	}
 }
 void RUN_entry(){
-	Serial.println("Onentry RUN");
 	doRun();
 	clock_start(SYSTICK_Time_CLOCK, SYSTICK_Time_ONENTRY_PERIOD, Time);
 }
 void PAUSE_trans(Event evt){
 	switch (evt){
 	  case Pause_RISING_interrupt:
-		Serial.println("Button Interrupt event move From state PAUSE to RUN");
+                Serial.println("Button interrupt change PAUSE to RUN");
 		current_state = RUN_trans;
 		RUN_entry();
 		break;
@@ -51,19 +50,18 @@ void PAUSE_trans(Event evt){
 	}
 }
 void PAUSE_entry(){
-	Serial.println("Onentry PAUSE");
 	doPause();
 }
-void doPause(){
-    Serial.println("doPause");
+void doRun(){
+  Serial.println("doRun");
 	//TODO add your code for the exectuion
 }
 void doUpdate(){
-    Serial.println("doUpdate");
+  Serial.println("doUpdate");
 	//TODO add your code for the exectuion
 }
-void doRun(){
-    Serial.println("doRun");
+void doPause(){
+  Serial.println("doPause");
 	//TODO add your code for the exectuion
 }
 void interrupt_Pause_RISING(){

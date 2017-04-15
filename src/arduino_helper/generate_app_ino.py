@@ -3,7 +3,7 @@ from src.arduino_helper.Grettings import Grettings
 def generate_app_ino(layouts):
     ino_f = open("output/arduino_app_new.ino", "w")
     ino_f.write(Grettings("arduino_app.ino", "the main file of your project"))
-    ino_f.write('# include "MsTimer2.h"\n# include "SoftwareSerial.h"\n# include "layout.h"\n# include "params.h"\n# include "systick.h"\n# include "noria.h"\n# include "clocks.h"\n# include "fsm.h"\n\n\n')
+    ino_f.write('#include "MsTimer2.h"\n#include "SoftwareSerial.h"\n#include "layout.h"\n#include "params.h"\n#include "systick.h"\n#include "noria.h"\n#include "clocks.h"\n#include "fsm.h"\n\n\n')
     ino_f.write("void setup(){ \n\t//todo : add all your setup for your arduino (be careful with generated code)\n\n")
     all = dict()
     for layout in layouts:
