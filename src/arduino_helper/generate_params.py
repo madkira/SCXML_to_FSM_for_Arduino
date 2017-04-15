@@ -1,8 +1,8 @@
 from src.arduino_helper.Grettings import Grettings
 
 def generate_params(events, clocks):
-    params_f = open("output/params_required.h", "w")
-    params_f.write(Grettings("params.h", "applicative parameters"))
+    params_f = open("output/params_new.h", "w")
+    params_f.write(Grettings("params_new.h", "applicative parameters"))
     params_f.write("\n#pragma once\n\n#define MODEM_BUFFER_SIZE\t\t\t256\n\n")
 
     params_f.write("enum Event {")

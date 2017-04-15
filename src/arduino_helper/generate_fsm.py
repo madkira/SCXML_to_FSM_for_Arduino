@@ -7,7 +7,7 @@ import re
 
 def generate_fsm(machine):
     fsm_h = open("output/fsm.h", "w")
-    fsm_cpp_required = open("output/fsm_required.cpp", "w")
+    fsm_cpp_required = open("output/fsm_new.cpp", "w")
     fsm_h.write(Grettings("fsm.h", "ain applicative fsm"))
 
     fsm_cpp_required.write(Grettings("fsm_requred.cpp", "This is what is needed inside the fsm.cpp file"))
