@@ -19,3 +19,8 @@ class getTransition(unittest.TestCase) :
         scxml = State_parsor(untangle.parse("test/xml/getTransition_notPresent.xml").state)
         with self.assertRaises(TrasitionNotFound ):
             scxml.obtain_Initial(scxml.obtain_Transition_Event())
+
+    def test_Transition_internal(self):
+        scxml = State_parsor(untangle.parse("test/xml/getTransition_internal.xml").state)
+        self.assertEqual(scxml.obtain_Transition_Event()[0].internal, True)
+        self.assertEqual(scxml.obtain_Transition_Event()[1].internal, False)

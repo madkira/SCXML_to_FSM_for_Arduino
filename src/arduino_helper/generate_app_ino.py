@@ -22,6 +22,7 @@ def generate_app_ino(layouts):
     clocks_init();\n\
     systick_init();\n\
     call_for_initial_on_entry();\n\
+    systick_start();\n\
 }\n\
 \n\
 void loop(){\n\

@@ -9,7 +9,14 @@ class Event_parsor(object):
 
 
     def obtain_event(self):
-        return Event(self.obtain_name(), self.obtain_state(), self.obtain_actions())
+        return Event(self.obtain_name(), self.obtain_state(), self.obtain_actions(), self.is_internal(),)
+
+
+    def is_internal(self):
+        try:
+            return True if self._event["type"] == "internal" else False
+        except IndexError:
+            return False
 
     def obtain_name(self):
         try:
@@ -30,8 +37,8 @@ class Event_parsor(object):
             return None
         try:
             actions = []
-            for action in self._event.send["event"]:
-                actions.append(action)
+            for action in self._event.send:
+                actions.append(action["event"])
             return actions
         except IndexError:
             return None  #raise

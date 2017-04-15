@@ -2,10 +2,11 @@ from src.Data_Model import State
 
 
 class Event(object):
-    def __init__(self, name, state, actions=None):
+    def __init__(self, name, state, actions=None, internal=False):
         self._name = name
         self._state = state
         self._actions = actions
+        self._internal = internal
 
 
     @property
@@ -20,3 +21,8 @@ class Event(object):
     @property
     def actions(self):
         return self._actions
+
+
+    @property
+    def internal(self):
+        return self._internal

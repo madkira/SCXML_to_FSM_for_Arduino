@@ -8,7 +8,6 @@
 
 #include "noria.h"
 
-#define CLOCKS_NUMBER      6
 
 typedef struct clock{
   int      tick;   // current count-down - clock is sleeping if 0

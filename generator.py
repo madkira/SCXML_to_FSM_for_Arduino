@@ -11,7 +11,7 @@ inargs = parser.parse_args()
 
 print ("Beginning of the arduino fsm generator")
 parser = Scxml_parsor(inargs.file)
-print(parser.first)
+
 generate_fsm(parser)
 
 
