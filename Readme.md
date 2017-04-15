@@ -66,7 +66,7 @@ header file where you have to specify the clocks details
 check that the nubber 
 
 # Lunch all tests :
-###execute the test luncher
+### execute the test luncher
 ```
 ./test_lancher.sh
 ```
@@ -74,7 +74,7 @@ check that the nubber
 
 # Functionality avaliable 
 
-#####The generator allows to generate finite state machine from scxml file with
+##### The generator allows to generate finite state machine from scxml file with
  
  - _transition send event_ name analyser to add physical interrupt as button (eventName_KINDofALERT_interrupt)
  - _transition send internal event_ allowing loop call without exiting state (no onentry done)
@@ -85,7 +85,7 @@ check that the nubber
  - generate file to be filled named FILE_new.(h|cpp|ino) allowing to use them by renaming them but not erase previous work
  
 
-#####The generator does not generate finite state machine with (non Exhaustively)
+##### The generator does not generate finite state machine with (non Exhaustively)
  
  - _hierarchic_ state
  - _parallel_ state because of the non efficiency of executing thread on arduino uno with the arduino overlay
