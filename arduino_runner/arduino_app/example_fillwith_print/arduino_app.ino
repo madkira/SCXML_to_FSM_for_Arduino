@@ -4,14 +4,14 @@
  *  file      : arduino_app.ino
  *  object    : the main file of your project
  ***/
-# include "MsTimer2.h"
-# include "SoftwareSerial.h"
-# include "layout.h"
-# include "params.h"
-# include "systick.h"
-# include "noria.h"
-# include "clocks.h"
-# include "fsm.h"
+#include "MsTimer2.h"
+#include "SoftwareSerial.h"
+#include "layout.h"
+#include "params.h"
+#include "systick.h"
+#include "noria.h"
+#include "clocks.h"
+#include "fsm.h"
 
 
 void setup(){ 

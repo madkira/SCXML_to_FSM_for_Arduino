@@ -7,8 +7,6 @@
 
 #pragma once
 
-#define TRACE
-
-#define digit_Pause			2//pin_number
-#define interrupt_Pause		0//interrupt_number
+#define digit_Pause		2	//pin_number
+#define interrupt_Pause		0 //interrupt_number
 
