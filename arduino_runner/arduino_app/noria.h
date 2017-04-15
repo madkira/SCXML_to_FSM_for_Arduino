@@ -4,7 +4,7 @@
  *  file      : eQueue.h
  *  object    : the event queue for a non-preemptive multi-micro-tasks OS
  ***/
-#include "param.h"
+#include "params.h"
 #pragma		once
 
 #define NORIA_RIBBON_SIZE	    5
@@ -22,8 +22,4 @@ typedef struct noria {
 } Noria_t;
 
 extern Noria_t noria;
-
-/*** the unique mandatory event ***/
-void  NO_EVENT(void);
-
 

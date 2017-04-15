@@ -48,11 +48,11 @@ push_event(Event evt) {
 /*** always in background ***/
 Event
 pop_event() {
-  if (distio() == 0) { return Event.NO_EVENT; }
+  if (distio() == 0) { return NO_EVENT; }
  
   /*** critical section - start ***/
   noInterrupts();
-  Event_t e = noria.ribbon[noria.op];
+  Event e = noria.ribbon[noria.op];
   next_op();
   interrupts();
   /*** critical section - end ***/

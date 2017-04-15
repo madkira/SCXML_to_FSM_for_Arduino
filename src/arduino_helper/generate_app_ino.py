@@ -1,8 +1,8 @@
 from src.arduino_helper.Grettings import Grettings
 
 def generate_app_ino(layouts):
-    ino_f = open("output/output_new.ino", "w")
-    ino_f.write(Grettings("output_new.ino", "the main file of your project"))
+    ino_f = open("output/arduino_app_new.ino", "w")
+    ino_f.write(Grettings("arduino_app.ino", "the main file of your project"))
     ino_f.write('# include "MsTimer2.h"\n# include "SoftwareSerial.h"\n# include "layout.h"\n# include "params.h"\n# include "systick.h"\n# include "noria.h"\n# include "clocks.h"\n# include "fsm.h"\n\n\n')
     ino_f.write("void setup(){ \n\t//todo : add all your setup for your arduino (be careful with generated code)\n\n")
     all = dict()
@@ -12,7 +12,7 @@ def generate_app_ino(layouts):
 
             all[tmp[0]] = tmp[0]
             ino_f.write("\tpinMode(digit_" + tmp[0] + ", INPUT_PULLUP);\n")
-            ino_f.write("\tattachedInterrupt(interrupt_" + tmp[0] + "," + layout + " , " + tmp[len(tmp) - 2] + ");\n")
+            ino_f.write("\tattachInterrupt(interrupt_" + tmp[0] + ", interrupt_" + tmp[0]+"_"+tmp[1] + ", " + tmp[len(tmp) - 2] + ");\n")
 
     ino_f.write("\t# ifdef TRACE\n\
         Serial.begin(115200);\n\

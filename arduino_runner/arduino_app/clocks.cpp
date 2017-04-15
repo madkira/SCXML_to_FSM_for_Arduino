@@ -25,7 +25,7 @@ clock_count(Clock_t *clk){
 void 
 clock_tick(Clock_t *clk){
   if(clk->tick == 0) return;
-	
+  
   clk->tick--;
   if(clk->tick == 0) {
     push_event(clk->evt);
@@ -33,7 +33,7 @@ clock_tick(Clock_t *clk){
 }
 
 void 
-clock_start(Clock_t *clk, int t, Event_t e){
+clock_start(Clock_t *clk, int t, Event e){
   noInterrupts();
   clk->tick = t;
   clk->evt  = e;

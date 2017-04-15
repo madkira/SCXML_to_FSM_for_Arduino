@@ -1,7 +1,7 @@
 from src.arduino_helper.Grettings import Grettings
 
 def generate_layout(layouts):
-    layout_f = open("output/layout.h", "w")
+    layout_f = open("output/layout_new.h", "w")
     layout_f.write(Grettings("layout.h", "hardware layout interruption definition"))
     layout_f.write("\n#pragma once\n\n")
     all = dict()

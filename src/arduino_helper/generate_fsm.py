@@ -22,7 +22,7 @@ void run_current(Event evt){\n\
 
     fsm_h.write("\n#pragma once\n\n")
     fsm_h.write("#include \"params.h\"\n")
-    fsm_h.write("void call_for_initial_on_entry();\n")
+    fsm_h.write("void run_current(Event evt);\nvoid call_for_initial_on_entry();\n")
     fsm_cpp_required.write("void call_for_initial_on_entry(){\n\tcurrent_state = "+ machine.first + "_trans;\n\t"+ machine.first+"_entry();\n}\n\n")
     all_event=dict()
     interrupt_event=dict()
@@ -39,14 +39,13 @@ void run_current(Event evt){\n\
         for action in state.onentry:
             if action["event"] not in transition_name :
                 tmp = action["event"].split('_')
-                if tmp[len(tmp) - 1] == "interrupt": interrupt_event[action["event"]] =action["event"]
-                to_implement[action["event"]] = "void " + action["event"] + "();\n"
+                if tmp[len(tmp) - 1] == "interrupt": interrupt_event[action["event"]] = action["event"]
+                to_implement[action["event"]] = action
             else :
                 try:
                     time = get_timer(action["delay"])
                     string = action["event"] + time
                     transition_name[string] = transition_name.pop(action["event"])
-                    print(string + "   " +transition_name[string].name)
                     timed_onentry[action["event"]] = time
                     onentry_clock[action["event"]] = time
                 except IndexError:
@@ -61,7 +60,8 @@ void run_current(Event evt){\n\
             if transition.internal :
                 for action in transition.actions :
                     fsm_cpp_required.write("\n\t\t"+ action +"();")
-                fsm_cpp_required.write("\n\t\tclock_start(SYSTICK_" + transition.name + "_RECALL_PERIOD, SYSTICK_" + transition.name+ "_ONENTRY_PERIOD, " + transition.name+ ");")
+                    to_implement[action] = action
+                fsm_cpp_required.write("\n\t\tclock_start(SYSTICK_" + transition.name + "_CLOCK, SYSTICK_" + transition.name+ "_RECALL_PERIOD, " + transition.name+ ");")
             else:
                 fsm_cpp_required.write("\n\t\tcurrent_state = "+ transition.state+"_trans;\n\t\t"+ transition.state+"_entry();")
             fsm_cpp_required.write("\n\t\tbreak;\n")
@@ -79,10 +79,19 @@ void run_current(Event evt){\n\
 
 
     for implement in to_implement:
-        fsm_h.write(to_implement[implement])
-        fsm_cpp_required.write("void "+implement +"(){\n\t//TODO add your code for the exectuion\n}\n")
+        fsm_h.write("void "+implement +"();\n")
+        fsm_cpp_required.write("void "+implement +"(){")
+        try:
+            fsm_cpp_required.write(to_implement[implement].script)
+        except:
+            fsm_cpp_required.write("\n\t//TODO add your code for the exectuion\n}\n")
+
     for redef in redefined:
         fsm_h.write(redef)
+    for interrupt in interrupt_event :
+        name = interrupt.split('_')
+        fsm_h.write("void interrupt_" + name[0] + "_" + name[1] + "();\n")
+        fsm_cpp_required.write("void interrupt_" + name[0] + "_" + name[1] + "(){\n\tpush_event("+interrupt+");\n}\n")
     generate_layout(interrupt_event)
     generate_app_ino(interrupt_event)
     generate_params(all_event, timed_onentry)

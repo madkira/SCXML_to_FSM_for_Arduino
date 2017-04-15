@@ -30,7 +30,8 @@ scxml parser for python
 ```
 pyp3 install untangle
 ```
-
+### arduino ide :
+check at https://www.arduino.cc/en/main/software
 
 # Generate the finite state machine
 ### execute the generator
@@ -73,11 +74,19 @@ check that the nubber
 
 # Functionality avaliable 
 
-The generator allows to generate finite state machine from scxml file with
+#####The generator allows to generate finite state machine from scxml file with
  
  - _transition send event_ name analyser to add physical interrupt as button (eventName_KINDofALERT_interrupt)
  - _transition send internal event_ allowing loop call without exiting state (no onentry done)
  - _onentry_ analysed to generate function involving actions 
  - _onentry_ with _transition interal_ call the event with a specific _delay_ in ms
+ - _initial_ find as a argument or as a node 
+ - take a file in execution or find the fsm.xml by default
+ - generate file to be filled named FILE_new.(h|cpp|ino) allowing to use them by renaming them but not erase previous work
  
+
+#####The generator does not generate finite state machine with (non Exhaustively)
  
+ - _hierarchic_ state
+ - _parallel_ state because of the non efficiency of executing thread on arduino uno with the arduino overlay
+ - _raise_ because of the untangle that chain the node and raise is a world reserved of python

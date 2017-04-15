@@ -2,7 +2,7 @@ from src.Data_Model import Event
 
 
 class State(object):
-    def __init__(self, name, transitions = None, onentries= None, children = None,):
+    def __init__(self, name, transitions = None, onentries= None, children = None):
         self._name=name
         self._children=[]
         self._transitions=[]
