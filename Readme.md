@@ -33,6 +33,16 @@ pyp3 install untangle
 ### arduino ide :
 check at https://www.arduino.cc/en/main/software
 
+
+### MsTimer2 
+required for clock automation
+
+The folder is avaliable inside arduino_runner it have to be copy inside arduino sketchbook libraries to be able to compile and televerse the code on the arduino 
+
+default arduino sketchbook folder :
+```
+cp -r arduino_runner/MsTimer2 ~/sketchbook/libraries
+```
 # Generate the finite state machine
 ### execute the generator
 ```
@@ -70,8 +80,20 @@ check that the nubber
 ```
 ./test_lancher.sh
 ```
+# Run the application
+after have done the installation of all the requirement describe on top
 
+execute the generator with the scxml file (default fsm.xml)
 
+copy the file generated inside output directory into arduino_runner/arduino_app
+
+remove all the _new inside the files generated
+
+add your code inside fsm.cpp and give the parameters inside params.h and layout.h
+(files filled avaliable inside arduino_runner/arduino_app/example_fillwith_print)
+
+use arduino ide to compile televerse (for the example one button in digit 2 is requested)
+and serial monitor for result
 # Functionality avaliable 
 
 ##### The generator allows to generate finite state machine from scxml file with
