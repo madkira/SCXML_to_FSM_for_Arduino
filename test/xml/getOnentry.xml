@@ -1,0 +1,6 @@
+<state>
+    <onentry>
+        <send event="doRun"/>
+        <send event="Time_pin"/>
+    </onentry>
+</state>

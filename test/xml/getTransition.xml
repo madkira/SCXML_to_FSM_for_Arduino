@@ -1,0 +1,4 @@
+<state>
+<transition event="Lap" target="RESET"/>
+<transition event="Out" target="LAPPING"/>
+</state>
