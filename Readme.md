@@ -90,7 +90,9 @@ copy the file generated inside output directory into arduino_runner/arduino_app
 remove all the _new inside the files generated
 
 add your code inside fsm.cpp and give the parameters inside params.h and layout.h
-(files filled avaliable inside arduino_runner/arduino_app/example_fillwith_print)
+(files filled avaliable inside arduino_runner/arduino_app/example_fillwith_print )
+
+instead you can compare both files to validate that I have only add some Serial.println() (with meld for example)
 
 use arduino ide to compile televerse (for the example one button in digit 2 is requested)
 and serial monitor for result
