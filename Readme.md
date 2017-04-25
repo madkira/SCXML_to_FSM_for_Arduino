@@ -41,7 +41,7 @@ The folder is avaliable inside arduino_runner it have to be copy inside arduino 
 
 default arduino sketchbook folder :
 ```
-cp -r arduino_runner/MsTimer2 ~/sketchbook/libraries
+cp -r arduino_runner/MsTimer2 ~/Arduino/libraries
 ```
 # Generate the finite state machine
 ### execute the generator
