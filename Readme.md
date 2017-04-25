@@ -28,7 +28,7 @@ pip3 install --upgrade pip
 ### untangle:
 scxml parser for python 
 ```
-pyp3 install untangle
+pip3 install untangle
 ```
 ### arduino ide :
 check at https://www.arduino.cc/en/main/software
